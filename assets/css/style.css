@@ -1,0 +1,68 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+}
+
+#mario {
+    width: 20%;
+}
+
+#luigi {
+    width: 20%;
+}
+
+#peach {
+    width: 20%;
+}
+
+#goomba, 
+#Goomba,
+#goombaHealth {
+    width: 15%
+}
+
+#paratroopa,
+#paraTroopa,  
+#ptHealth {
+    width: 15%;
+}
+
+#wario,
+#warioHealth{
+    width: 20%;
+} 
+
+#koopaTroopa,
+#KoopaTroopa,
+#koopaHealth {
+    width: 20%;
+}
+
+#bigBoo,
+#booHealth {
+    width: 20%;
+}
+
+#bowser,
+#bowserHealth {
+    width: 25%;
+}
+
+.progress {
+    width: 15%;
+    margin-bottom: 10px;
+}
+
+#attack {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#reset {
+    margin-left: 1300px;
+    margin-top: 25px;
+    width: 125px;
+    height: 50px;
+    font-size: 18px;
+}
