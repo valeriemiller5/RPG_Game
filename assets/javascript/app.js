@@ -10,52 +10,67 @@ $('#goombaHealth').hide();
 $('#ptHealth').hide();
 $('#warioHealth').hide();
 $('#attack').hide();
+$('#action').hide();
 
 // set stats for all characters
-var mario = {
-    health: 1000,
-    attack: 150,
-};
-var luigi = {
-    health: 800,
-    attack: 120
-};
-var peach = {
-    health: 2000,
-    attack: 100
-};
-var bowser = {
-    health: 1000,
-    counter: 100
-};
-var wario = {
-    health: 1000,
-    counter: 100
-};
-var koopaTroopa = {
-    health: 800,
-    counter: 80
-};
-var paraTroopa = {
-    health: 800,
-    counter: 80
-};
-var goomba = {
-    health: 800,
-    counter: 80
-};
-var bigBoo = {
-    health: 1000,
-    counter: 100
-};
+var hero = [
+    playerMario = {
+        name: "mario",
+        health: 1000,
+        attack: 150,
+    },
+    playerLuigi = {
+        name: "luigi",
+        health: 800,
+        attack: 120
+    },
+    playerPeach = {
+        name: "peach",
+        health: 2000,
+        attack: 100
+    }
+]
+
+var villain = [
+    autoBowser = {
+        name: "bowser",
+        health: 1000,
+        counter: 100
+    },
+    autoWario = {
+        name: "wario",
+        health: 1000,
+        counter: 100
+    },
+    autoKoopaTroopa = {
+        name: "koopatroopa",
+        health: 800,
+        counter: 80
+    },
+    autoParaTroopa = {
+        name: "paratroopa",
+        health: 800,
+        counter: 80
+    },
+    autoGoomba = {
+        name:"goomba",
+        health: 800,
+        counter: 80
+    },
+    autoBigBoo = {
+        name: "bigboo",
+        health: 1000,
+        counter: 100
+    }
+]
 
 // Reset the game if "RESET" button is clicked
-$('#reset').click(function() {
+$('#reset').on('click', function() {
     location.reload();
 });
 
 // Pick one of the three Hero characters.  Once character is clicked, the designated enemies for that character will appear and the other Heros will disappear. Selected Hero will fight enemies one at a time. Unselected enemies will disappear until it is their "turn".
-$('#mario, #luigi, #peach').click(function() {
+$('#mario, #luigi, #peach').on('click', function() {
     if(this.id == 'mario') {
         $('.marioEnemies').show();
         $("#marioHealth").show();
@@ -128,8 +143,26 @@ $('#mario, #luigi, #peach').click(function() {
     }
 })
 
+$('#attack').on('click', function() {
+    $("#action").show();
+    $("#actionText").css("margin-left", "15px")
+    $("#actionText").css("margin-top", "10px");
+    $("#actionText").html("<h3>" + "The fight has begun!" + "</h3>");
+    // console.log(hero[0].health);
+    // console.log(villain[4].health);
+    startGame();
+})
+
 function startGame() {
-    
+    for(var i = 0;  i < hero.length; i++) {
+        console.log(hero[i]);
+        if(hero.name === "mario") {
+            console.log("You chose Mario.");
+            for(var j = 0; j < villain.length; j++) {
+                console.log(villain[j]);
+            }
+        }
+    }
 }
 
 })

@@ -18,7 +18,7 @@ body {
 #goomba, 
 #Goomba,
 #goombaHealth {
-    width: 15%
+    width: 15%;
 }
 
 #paratroopa,
@@ -45,7 +45,7 @@ body {
 
 #bowser,
 #bowserHealth {
-    width: 25%;
+    width: 25%; 
 }
 
 .progress {
@@ -57,6 +57,10 @@ body {
     color: red;
     font-weight: bold;
     font-size: 18px;
+    margin-left: 500px;
+    margin-top: 50px;
+    width: 175px;
+    height: 85px;
 }
 
 #reset {
@@ -65,4 +69,14 @@ body {
     width: 125px;
     height: 50px;
     font-size: 18px;
+}
+
+#action {
+    width: 500px;
+    height: 400px;
+    background-color: wheat;
+    border-color: black;
+    position: absolute;
+    margin-left: 400px;
+    margin-top: -250px;
 }
