@@ -15,19 +15,19 @@ $('#action').hide();
 // set stats for all characters
 var hero = [
     mario = {
-        name: 'mario',
+        name: 'Mario',
         health: 1000,
         attack: 150,
         clicked: false
     },
     luigi = {
-        name: "luigi",
+        name: "Luigi",
         health: 800,
         attack: 120,
         clicked: false
     },
     peach = {
-        name: "peach",
+        name: "Peach",
         health: 2000,
         attack: 100,
         clicked: false
@@ -36,37 +36,37 @@ var hero = [
 
 var villain = [
     bowser = {
-        name: "bowser",
+        name: "Bowser",
         health: 1000,
         counter: 100,
         clicked: false
     },
     wario = {
-        name: "wario",
+        name: "Wario",
         health: 1000,
         counter: 100,
         clicked: false
     },
     koopaTroopa = {
-        name: "koopatroopa",
+        name: "Koopatroopa",
         health: 800,
         counter: 80,
         clicked: false
     },
     paraTroopa = {
-        name: "paratroopa",
+        name: "Paratroopa",
         health: 800,
         counter: 80,
         clicked: false
     },
     goomba = {
-        name: 'goomba',
+        name: 'Goomba',
         health: 800,
         counter: 80,
         clicked: false
     },
     bigBoo = {
-        name: "bigboo",
+        name: "Big Boo",
         health: 1000,
         counter: 100,
         clicked: false
@@ -74,8 +74,10 @@ var villain = [
 ]
 
 // reusable variables for keeping score
+var heroName = []
 var heroHealth = []
 var heroAttack = []
+var villainName = []
 var villainHealth = []
 var villainCounter = []
 
@@ -126,12 +128,15 @@ $('#mario, #luigi, #peach').on('click', function() {
         $('#peach').hide();
         $('#koopaTroopa, #paraTroopa, #bigBoo').on('click', function() {
             if(this.id == 'koopaTroopa') {
+                villain[2].clicked = true;
                 $('#paraTroopa').hide();
                 $('#bigBoo').hide();
             } else if(this.id == 'paraTroopa') {
+                villain[3].clicked = true;
                 $('#koopaTroopa').hide();
                 $('#bigBoo').hide();
             } else if(this.id == 'bigBoo') {
+                villain[5].clicked = true;
                 $('#koopaTroopa').hide();
                 $('#paraTroopa').hide();
             }
@@ -149,12 +154,15 @@ $('#mario, #luigi, #peach').on('click', function() {
         $('#luigi').hide();
         $('#KoopaTroopa, #Goomba, #bowser').on('click', function() {
             if(this.id == 'KoopaTroopa') {
+                villain[2].clicked = true;
                 $('#Goomba').hide();
                 $('#bowser').hide();
             } else if(this.id == 'Goomba') {
+                villain[4].clicked = true;
                 $('#KoopaTroopa').hide();
                 $('#bowser').hide();
             } else if(this.id == 'bowser') {
+                villain[0].clicked = true;
                 $('#KoopaTroopa').hide();
                 $('#Goomba').hide();
             }
@@ -173,9 +181,12 @@ $('#attack').on('click', function() {
     $("#actionText").css("margin-top", "10px");
     $("#actionText").html("<h3>" + "The fight has begun!" + "</h3>");
     heroHealth = heroHealth - villainCounter;
-    console.log(heroHealth)
     villainHealth = villainHealth - (heroAttack * 2.5);
-    console.log(villainHealth);
+    $('.marioHealth').css("width", Math.floor(100/heroHealth * heroHealth));
+    $('#actionText').append(`
+    ${heroName} attacked ${villainName}!
+    <div>${villainName} has countered!</div>
+    ${heroName}'s health is ${heroHealth}, ${villainName}'s health is ${villainHealth}`)
     if(heroHealth <= 0) {
         $('#action').html("<img id='gameOver' src='./assets/images/game_over.png'/>");
         console.log("Game Over");
@@ -189,15 +200,17 @@ function startGame() {
     for(var i = 0;  i < hero.length; i++) {
         // console.log(hero[i]);
         if(hero[i].clicked === true) {
+            heroName.push(hero[i].name);
             heroHealth.push(hero[i].health);
             heroAttack.push(hero[i].attack);
-            console.log(`You chose Hero: ${hero[i].name}, Health: ${heroHealth}, Attack: ${heroAttack}`)
+            console.log(`You chose Hero: ${heroName}, Health: ${heroHealth}, Attack: ${heroAttack}`)
             for(var j = 0; j < villain.length; j++) {
                 // console.log(villain[j]);
                 if(villain[j].clicked === true) {
+                    villainName.push(villain[j].name);
                     villainHealth.push(villain[j].health);
                     villainCounter.push(villain[j].counter);
-                    console.log(`You chose Hero: ${villain[j].name}, Health: ${villainHealth}, Counter: ${villainCounter}`)
+                    console.log(`You chose Villain: ${villainName}, Health: ${villainHealth}, Counter: ${villainCounter}`)
                 }
             }
         }
