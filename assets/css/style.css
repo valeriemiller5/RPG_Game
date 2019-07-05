@@ -80,3 +80,8 @@ body {
     margin-left: 400px;
     margin-top: -250px;
 }
+
+#gameOver, #winner {
+    width: 500px;
+    height: 400px;
+}
